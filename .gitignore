@@ -1,0 +1,13 @@
+# Ignore Virtual Environment
+.venv/
+venv/
+
+pipfile
+pipfile.lock
+
+poetry.lock
+pyproject.toml
+
+# Ignore Vscode Settings
+.vscode/
+.vscode-server/
