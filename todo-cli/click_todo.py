@@ -6,7 +6,6 @@ import json
 import datetime as dt
 from dataclasses import dataclass
 
-
 # External Imports
 import click
 from rich import print, box
@@ -86,7 +85,7 @@ def add_todo(title, description, priority, filepath):
     
     with open(file_name, 'a+') as file:
         new_todo = TodoItem(title=title, description=description, priority=priority)
-        file.write(json.dumps(new_todo.__dict__))
+        file.write(json.dumps(new_todo.__dict__)) 
         file.write('\n')
     
     console.log(f'Task "{title}" has been added to the file.')
@@ -130,11 +129,11 @@ def list_todo(priority, filepath):
             if f'priority: {PRIORITIES[priority]}' in todo:
                 print(f'({idx}) - {todo}')
 
-@todo_cli.add_command(add_todo)
-@todo_cli.add_command(delete_todo)
-@todo_cli.add_command(update_todo)
-@todo_cli.add_command(patch_todo)
-@todo_cli.add_command(list_todo)
+todo_cli.add_command(add_todo)
+todo_cli.add_command(delete_todo)
+todo_cli.add_command(update_todo)
+todo_cli.add_command(patch_todo)
+todo_cli.add_command(list_todo)
 
 if __name__ == '__main__':
     todo_cli()
